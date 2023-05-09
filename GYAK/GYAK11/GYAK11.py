@@ -156,7 +156,7 @@ class ConvolutionLayer:
         image_h, image_w = image.shape
         convolution_output = np.zeros((image_h-self.kernel_size+1, image_w-self.kernel_size+1, self.kernel_num))
         for patch, h, w in self.patches_generator(image):
-            convolution_output[h,w] = np.sum(patch* self.kernels)
+            convolution_output[h,w] = np.sum(patch* self.kernels, axis=(1,2))
         return convolution_output,self.kernels
 
 # %%
